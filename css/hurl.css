@@ -1,0 +1,60 @@
+/*
+ * Hurl Local CSS
+ * 
+ * Version 1.0
+ * Last Revision: 2010 05 28
+ * 
+ * by Marco 'Xmas' Colombo <marco.colombo AT tecnomovie DOT com>
+ * Copyright (C) 2010 Marco Natale Colombo. All Rights Reserved.
+ *
+ */
+
+body {
+	font-size: 62.5%;
+	font-family: Arial, sans-serif; 
+}
+
+h2 {
+	margin: 10px;
+	font-size: 1.6em;
+}
+
+form {
+	margin: 15px;
+	font-size: 1.4em;
+	border-left: 2px solid black;
+}
+
+form div {
+	padding: 10px;
+}
+
+label, input, select {
+	margin: 0 0 0 10px;
+}
+
+label {
+	width: 50px;
+	display: inline-block;
+}
+
+#add {
+	width: auto;
+}
+
+input, select {
+	width: 75px;
+}
+
+#address {
+	width: 400px;
+}
+
+input.param {
+	width: 163px;
+	margin: 0 10px 0 0;
+}
+
+#params {
+	display: none;
+}
