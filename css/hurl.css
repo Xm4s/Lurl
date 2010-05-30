@@ -21,7 +21,6 @@ h2 {
 
 form {
 	margin: 15px;
-	font-size: 1.4em;
 	border-left: 2px solid black;
 }
 
@@ -35,11 +34,19 @@ label, input, select {
 
 label {
 	width: 50px;
+	font-size: 1.4em;
 	display: inline-block;
 }
 
 label.close {
 	cursor: pointer;
+	width: auto;
+}
+
+label.error {
+	font-size: 1.2em;
+	color: #ff0000;
+	width: auto;
 }
 
 #add {

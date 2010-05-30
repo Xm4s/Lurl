@@ -13,10 +13,13 @@ $(document).ready(function() { hurl.init(); });
 
 var hurl = {
 	
+	counter: 0,
+	
 	init: function init() {
 		
 		hurl.method.init();
 		hurl.params.init();
+		hurl.send.init();
 	},
 	
 	method: {
@@ -54,10 +57,10 @@ var hurl = {
 			var param = [];
 			
 			param.push('<div class="param">');
-			param.push('<label>Name:</label>');
-			param.push('<input class="name" type="text" />');
-			param.push('<label>Value:</label>');
-			param.push('<input class="value" type="text" />');
+			param.push('<label for="name_' + hurl.counter + '">Name:</label>');
+			param.push('<input id="name_' + hurl.counter + '" class="name" type="text" />');
+			param.push('<label for="value_' + hurl.counter + '">Value:</label>');
+			param.push('<input id="value_' + hurl.counter + '"class="value" type="text" />');
 			param.push('<label class="close">x</label>');
 			param.push('</div>');
 			
@@ -68,6 +71,33 @@ var hurl = {
 				$target = $(e.target).parent();
 				$target.detach();
 			});
+			
+			hurl.counter++;
+		}
+	},
+	
+	send: {
+		
+		init: function init() {
+										
+			$('#form').validate({
+
+				rules: {
+					address: {
+						required: true,
+						url: true
+					}
+				},
+
+				submitHandler: function() {
+					hurl.send.ajaxSubmit();
+				}
+			});
+		},
+		
+		ajaxSubmit: function ajaxSubmit() {
+			
+			console.log('form submit');
 		}
 	}
 }
