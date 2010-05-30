@@ -2,9 +2,9 @@
  * Hurl Local CSS
  * 
  * Version 1.0
- * Last Revision: 2010 05 28
+ * Last Revision: 2010 05 30
  * 
- * by Marco 'Xmas' Colombo <marco.colombo AT tecnomovie DOT com>
+ * by Marco 'Xmas' Colombo <marco.natale.colombo AT gmail DOT com>
  * Copyright (C) 2010 Marco Natale Colombo. All Rights Reserved.
  *
  */
@@ -38,21 +38,26 @@ label {
 	display: inline-block;
 }
 
+label.close {
+	cursor: pointer;
+}
+
 #add {
 	width: auto;
+	cursor: pointer;
 }
 
 input, select {
 	width: 75px;
 }
 
-#address {
-	width: 400px;
-}
-
-input.param {
+div.param input {
 	width: 163px;
 	margin: 0 10px 0 0;
+}
+
+#address {
+	width: 400px;
 }
 
 #params {
