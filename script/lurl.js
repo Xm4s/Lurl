@@ -96,11 +96,8 @@ var hurl = {
 		
 		ajaxSubmit: function ajaxSubmit() {
 			
-			console.log('address: ' + $('#address').val());
-			console.log('method: ' + $('#method').val());
-			
-			var data = [];
-			data['hurlAddressField'] = $('#address').val();			
+			var requestData = [];
+			requestData['lurlAddressField'] = $('#address').val();			
 			$('div.param').each(function() {					
 				data[$(this).children('input.name').val()] = $(this).children('input.value').val();
 			});
@@ -108,10 +105,12 @@ var hurl = {
 			$.ajax({
 				url: 'gateway.php',
 				type: $('#method').val(),
-				data: data,
+				data: requestData,
 				cache: false,
 				dataType: 'text',
-				success: function() {}			
+				success: function(data) {
+					console.log(data);
+				}			
 			});			
 		}
 	}
