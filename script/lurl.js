@@ -35,10 +35,10 @@ var hurl = {
 			
 			var method = $('#method option:selected').val();
 			
-			if(method == 'GET') {
-				$('#params').hide();
-			} else {
+			if(method == 'POST') {
 				$('#params').show();
+			} else {
+				$('#params').hide();
 			}
 			
 			$('#form').attr('method', method);
@@ -85,7 +85,6 @@ var hurl = {
 				rules: {
 					address: {
 						required: true,
-						url: true
 					}
 				},
 
@@ -97,7 +96,23 @@ var hurl = {
 		
 		ajaxSubmit: function ajaxSubmit() {
 			
-			console.log('form submit');
+			console.log('address: ' + $('#address').val());
+			console.log('method: ' + $('#method').val());
+			
+			var data = [];
+			data['hurlAddressField'] = $('#address').val();			
+			$('div.param').each(function() {					
+				data[$(this).children('input.name').val()] = $(this).children('input.value').val();
+			});
+			
+			$.ajax({
+				url: 'gateway.php',
+				type: $('#method').val(),
+				data: data,
+				cache: false,
+				dataType: 'text',
+				success: function() {}			
+			});			
 		}
 	}
 }

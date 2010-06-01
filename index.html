@@ -2,18 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
   <head>
-    <title>Hurl Local</title>
+    <title>Lurl Local</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="author" content="Marco 'Xmas' Colombo - marco.natale.colombo AT gmail.com" />
     <link rel="stylesheet" href="./css/reset.css" type="text/css" />
-    <link rel="stylesheet" href="./css/hurl.css" type="text/css" />
+    <link rel="stylesheet" href="./css/lurl.css" type="text/css" />
 		<script type="text/javascript" src="./lib/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="./lib/jquery.validate.min.js"></script>
-		<script type="text/javascript" src="./script/hurl.js"></script>
+		<script type="text/javascript" src="./script/lurl.js"></script>
 	</head>
 	<body>
 		<h2>Request Data</h2>
-		<form id="form" method="GET" action="proxy.php">
+		<form id="form" method="GET" action="gateway.php">
 			<fieldset>
 				<div>
 					<label for="address">Address:</label>
@@ -24,6 +24,8 @@
 					<select id="method" name="method">
 						<option value="GET">GET</option>
 						<option value="POST">POST</option>
+						<option value="PUT">PUT</option>
+						<option value="DELETE">DELETE</option>
 					</select>
 				</div>
 			</fieldset>
@@ -38,5 +40,7 @@
 				</div>
 			</fieldset>
 		</form>
+		<div id="response">
+		</div>
 	</body>
 </html>
