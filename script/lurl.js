@@ -1,5 +1,5 @@
 /*
- * Hurl Local Script
+ * Lurl Local Script
  * 
  * Version 1.0
  * Last Revision: 2010 05 30
@@ -9,17 +9,17 @@
  *
  */
 
-$(document).ready(function() { hurl.init(); });
+$(document).ready(function() { lurl.init(); });
 
-var hurl = {
+var lurl = {
 	
 	counter: 0,
 	
 	init: function init() {
 		
-		hurl.method.init();
-		hurl.params.init();
-		hurl.send.init();
+		lurl.method.init();
+		lurl.params.init();
+		lurl.send.init();
 	},
 	
 	method: {
@@ -27,7 +27,7 @@ var hurl = {
 		init: function method() {
 		
 			$('#method')
-				.bind('change', hurl.method.onChange)
+				.bind('change', lurl.method.onChange)
 				.trigger('change');
 		},
 		
@@ -49,7 +49,7 @@ var hurl = {
 		
 		init: function init() {
 			
-			$('#add').bind('click', hurl.params.onClickAdd);
+			$('#add').bind('click', lurl.params.onClickAdd);
 		},
 		
 		onClickAdd: function onClickAdd() {
@@ -57,10 +57,10 @@ var hurl = {
 			var param = [];
 			
 			param.push('<div class="param">');
-			param.push('<label for="name_' + hurl.counter + '">Name:</label>');
-			param.push('<input id="name_' + hurl.counter + '" class="name" type="text" />');
-			param.push('<label for="value_' + hurl.counter + '">Value:</label>');
-			param.push('<input id="value_' + hurl.counter + '"class="value" type="text" />');
+			param.push('<label for="name_' + lurl.counter + '">Name:</label>');
+			param.push('<input id="name_' + lurl.counter + '" class="name" type="text" />');
+			param.push('<label for="value_' + lurl.counter + '">Value:</label>');
+			param.push('<input id="value_' + lurl.counter + '"class="value" type="text" />');
 			param.push('<label class="close">x</label>');
 			param.push('</div>');
 			
@@ -72,7 +72,7 @@ var hurl = {
 				$target.detach();
 			});
 			
-			hurl.counter++;
+			lurl.counter++;
 		}
 	},
 	
@@ -83,13 +83,13 @@ var hurl = {
 			$('#form').validate({
 
 				rules: {
-					address: {
+					url: {
 						required: true,
 					}
 				},
 
 				submitHandler: function() {
-					hurl.send.ajaxSubmit();
+					lurl.send.ajaxSubmit();
 				}
 			});
 		},
@@ -97,21 +97,34 @@ var hurl = {
 		ajaxSubmit: function ajaxSubmit() {
 			
 			var requestData = [];
-			requestData['lurlAddressField'] = $('#address').val();			
-			$('div.param').each(function() {					
-				data[$(this).children('input.name').val()] = $(this).children('input.value').val();
-			});
 			
+			var paramIndex = $('#url').val().indexOf('?');
+			var requestUrl = $('#url').val().substr(0,paramIndex);
+			var requestParam = $('#url').val().substr(paramIndex+1,$('#url').val().length);
+			
+			requestData.push('__url=' + requestUrl);
+			requestData.push('&__method=' + $('#method').val());
+			requestData.push('&' + requestParam);
+						
+			if($('#method').val() == 'POST') {
+				
+				$('div.param').each(function() {
+					requestData.push('&' + $(this).children('input.name').val());
+					requestData.push('=' + $(this).children('input.value').val());
+				});
+			}
+
+			requestData = requestData.join('');
+												
 			$.ajax({
-				url: 'gateway.php',
 				type: $('#method').val(),
+				url: 'gateway.php',
 				data: requestData,
-				cache: false,
 				dataType: 'text',
 				success: function(data) {
 					console.log(data);
 				}			
-			});			
+			});
 		}
 	}
 }

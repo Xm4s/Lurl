@@ -1,5 +1,5 @@
 /*
- * Hurl Local CSS
+ * Lurl Local CSS
  * 
  * Version 1.0
  * Last Revision: 2010 05 30
@@ -63,7 +63,7 @@ div.param input {
 	margin: 0 10px 0 0;
 }
 
-#address {
+#url {
 	width: 400px;
 }
 
