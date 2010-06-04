@@ -96,11 +96,17 @@ var lurl = {
 		
 		ajaxSubmit: function ajaxSubmit() {
 			
+			var requestUrl = '';
+			var requestParam = '';
 			var requestData = [];
 			
-			var paramIndex = $('#url').val().indexOf('?');
-			var requestUrl = $('#url').val().substr(0,paramIndex);
-			var requestParam = $('#url').val().substr(paramIndex+1,$('#url').val().length);
+			var paramIndex = $('#url').val().indexOf('?');			
+			if(paramIndex > 0) {
+				requestUrl = $('#url').val().substr(0,paramIndex);
+				requestParam = $('#url').val().substr(paramIndex+1,$('#url').val().length);
+			} else {
+				requestUrl = $('#url').val();
+			}
 			
 			requestData.push('__url=' + requestUrl);
 			requestData.push('&__method=' + $('#method').val());
