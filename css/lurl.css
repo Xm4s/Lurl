@@ -2,7 +2,7 @@
  * Lurl Local CSS
  * 
  * Version 1.0
- * Last Revision: 2010 05 30
+ * Last Revision: 2010 06 04
  * 
  * by Marco 'Xmas' Colombo <marco.natale.colombo AT gmail DOT com>
  * Copyright (C) 2010 Marco Natale Colombo. All Rights Reserved.
@@ -19,10 +19,6 @@ h2 {
 	padding: 20px 0 0 10px;	
 }
 
-#form div, #response div {
-	padding: 10px;
-}
-
 label, input, select, span {
 	margin: 0 0 0 10px;
 }
@@ -35,13 +31,6 @@ label, span {
 
 input, select {
 	width: 75px;
-}
-
-pre {
-	width: 700px;
-	overflow: auto;
-	font-size: 1.6em;
-	margin: 20px 0 0 20px;
 }
 
 div.param {
@@ -70,15 +59,31 @@ label.error {
 	border-left: 2px solid black;
 }
 
-#add {
-	width: auto;
-	cursor: pointer;
+#form div, #response div {
+	padding: 10px;
 }
 
 #url {
 	width: 510px;
 }
 
-#params, #response_wrapper {
+#add {
+	width: auto;
+	cursor: pointer;
+}
+
+#loading_wrapper img {
+	padding: 1px 0;
+	margin: 0 0 0 38px;
+}
+
+#content {
+	width: 700px;
+	overflow: auto;
+	font-size: 1.6em;
+	margin: 20px 0 0 20px;
+}
+
+#params, #response_wrapper, #loading_wrapper {
 	display: none;
 }

@@ -2,7 +2,7 @@
  * Lurl Local Script
  * 
  * Version 1.0
- * Last Revision: 2010 05 30
+ * Last Revision: 2010 06 04
  * 
  * by Marco 'Xmas' Colombo <marco.natale.colombo AT gmail DOT com>
  * Copyright (C) 2010 Marco Natale Colombo. All Rights Reserved.
@@ -96,6 +96,10 @@ var lurl = {
 		
 		ajaxSubmit: function ajaxSubmit() {
 			
+			$('#send_wrapper').hide();
+			$('#loading_wrapper').show();
+			$('#response_wrapper').hide();
+			
 			var requestUrl = '';
 			var requestParam = '';
 			var requestData = [];
@@ -129,6 +133,9 @@ var lurl = {
 				dataType: 'text',
 				success: function(data, status, response) {
 					$('#content').html(data);
+					
+					$('#send_wrapper').show();
+					$('#loading_wrapper').hide();
 					$('#response_wrapper').show();
 				}			
 			});
