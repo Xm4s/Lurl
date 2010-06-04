@@ -15,27 +15,42 @@ body {
 }
 
 h2 {
-	margin: 10px;
 	font-size: 1.6em;
+	padding: 20px 0 0 10px;	
 }
 
-form {
-	margin: 15px;
-	border-left: 2px solid black;
-}
-
-form div {
+#form div, #response div {
 	padding: 10px;
 }
 
-label, input, select {
+label, input, select, span {
 	margin: 0 0 0 10px;
 }
 
-label {
+label, span {
 	width: 50px;
 	font-size: 1.4em;
 	display: inline-block;
+}
+
+input, select {
+	width: 75px;
+}
+
+pre {
+	width: 700px;
+	overflow: auto;
+	font-size: 1.6em;
+	margin: 20px 0 0 20px;
+}
+
+div.param {
+	padding: 10px 10px 10px 30px;
+}
+
+div.param input {
+	width: 213px;
+	margin: 0 10px 0 0;
 }
 
 label.close {
@@ -49,24 +64,21 @@ label.error {
 	width: auto;
 }
 
+#form, #response {
+	padding: 0;
+	margin: 15px;
+	border-left: 2px solid black;
+}
+
 #add {
 	width: auto;
 	cursor: pointer;
 }
 
-input, select {
-	width: 75px;
-}
-
-div.param input {
-	width: 163px;
-	margin: 0 10px 0 0;
-}
-
 #url {
-	width: 400px;
+	width: 510px;
 }
 
-#params {
+#params, #response_wrapper {
 	display: none;
 }

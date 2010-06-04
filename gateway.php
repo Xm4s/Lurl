@@ -1,55 +1,82 @@
 <?php
 
-if($_SERVER['REQUEST_METHOD'] == 'GET') {
+echo send();
+
+function send() {
+
+	$request = collect_data();
+	
+	$url = prepare_url($request['url']);
+	
+	if($url != false) {
+	
+		$opts = prepare_options($request['method'], $request['data']);
 		
-	$url = $_GET['__url'];
-	unset($_GET['__url']);
+		$context = stream_context_create($opts);
+		$fd = fopen($url, 'r', false, $context);
+		$response = stream_get_contents($fd);
+		fclose($fd);
+		
+		return htmlentities($response, ENT_QUOTES);
 	
-	$method = $_GET['__method'];
-	unset($_GET['__method']);
-	
-	if(count($_GET) > 0) {
-		$data = http_build_query($_GET);
 	} else {
-		$data = '';
-	}
 		
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {	
-		
-	$url = $_POST['__url'];
-	unset($_POST['__url']);
-	
-	$method = $_POST['__method'];
-	unset($_POST['__method']);
-	
-	if(count($_POST) > 0) {
-		$data = http_build_query($_POST);
-	} else {
-		$data = '';
+		return 'LURL ERROR: cannot resolve given url.';
 	}
 }
 
-if(strpos($url, '://') === false) {
-	$url = 'http://' . $url;
+function collect_data() {
+	
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$params = $_POST;
+	} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
+		$params = $_GET;
+	}
+		
+	$request['url'] = $params['__url'];
+	unset($params['__url']);
+	
+	$request['method'] = $params['__method'];
+	unset($params['__method']);
+	
+	$request['data'] = '';
+	if(count($params) > 0) {
+		$request['data'] = http_build_query($params);
+	}
+	
+	return $request;
 }
 
-$header = 'Content-type: application/x-www-form-urlencoded' . "\r\n";
-$header .= 'Content-Length: ' . strlen($data) . "\r\n";
+function prepare_url($url) {
+	
+	$url = explode('://', $url, 2); 
+	if(count($url) == 1) {
+		array_unshift($url, 'http');
+	}
+	
+	if($url[1] == gethostbyname($url[1])) {
+		$url = false;
+	} else {
+		$url = implode('://', $url);
+	}
+	
+	return $url;
+}
 
-$opts = array(
-	'http' => array(
-		'method' => $method,
-		'header' =>  $header,
-		'content' => $data
-	)
-);
+function prepare_options($method, $data) {
+	
+	$header = 'Content-type: application/x-www-form-urlencoded' . "\r\n";
+	$header .= 'Content-Length: ' . strlen($data) . "\r\n";
 
-//echo 'url: ' . $url . "\nmethod: " . $method . "\ndata: " . $data;
-
-$context = stream_context_create($opts);
-$fd = fopen($url, 'r', false, $context);
-$response = stream_get_contents($fd);
-
-echo $response;
+	$opts = array(
+		'http' => array(
+			'method' => $method,
+			'header' =>  $header,
+			'content' => $data
+		)
+	);
+	
+	return $opts;
+}
 
 ?>

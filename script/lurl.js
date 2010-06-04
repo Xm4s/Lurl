@@ -127,8 +127,9 @@ var lurl = {
 				url: 'gateway.php',
 				data: requestData,
 				dataType: 'text',
-				success: function(data) {
-					console.log(data);
+				success: function(data, status, response) {
+					$('#content').html(data);
+					$('#response_wrapper').show();
 				}			
 			});
 		}
