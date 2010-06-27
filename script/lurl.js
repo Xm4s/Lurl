@@ -20,6 +20,9 @@ var lurl = {
 		lurl.method.init();
 		lurl.params.init();
 		lurl.send.init();
+		
+		try { console.log('Welcome to Lurl!'); }
+		catch(err) { }
 	},
 	
 	method: {
@@ -96,9 +99,9 @@ var lurl = {
 		
 		ajaxSubmit: function ajaxSubmit() {
 			
-			$('#send_wrapper').hide();
-			$('#loading_wrapper').show();
-			$('#response_wrapper').hide();
+			$('#send-wrapper').hide();
+			$('#loading-wrapper').show();
+			$('#response-wrapper').hide();
 			
 			var requestUrl = '';
 			var requestParam = '';
@@ -134,9 +137,9 @@ var lurl = {
 				success: function(data, status, response) {
 					$('#content').html(data);
 					
-					$('#send_wrapper').show();
-					$('#loading_wrapper').hide();
-					$('#response_wrapper').show();
+					$('#send-wrapper').show();
+					$('#loading-wrapper').hide();
+					$('#response-wrapper').show();
 				}			
 			});
 		}

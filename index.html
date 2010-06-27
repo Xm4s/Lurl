@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<html>
   <head>
     <title>Lurl Local</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,36 +12,38 @@
 		<script type="text/javascript" src="./script/lurl.js"></script>
 	</head>
 	<body>
-		<h2>Request Data</h2>
-		<form id="form" method="GET" action="gateway.php">
-			<fieldset>
-				<div>
-					<label for="url">Url:</label>
-					<input id="url" type="text" name="url" value="" />
-				</div>
-				<div>
-					<label for="method">Method:</label>
-					<select id="method" name="method">
-						<option value="GET">GET</option>
-						<option value="POST">POST</option>
-					</select>
-				</div>
-			</fieldset>
-			<fieldset id="params">
-				<div>
-					<label id="add">+ Add Param</label>
-				</div>
-			</fieldset>
-			<fieldset>
-				<div id="send_wrapper">
-					<input id="send" type="submit" value="Send">
-				</div>
-				<div id="loading_wrapper">
-					<img id="loading" src="./gfx/ajax-loader.gif" alt="loading..." title="loading..." />
-				</div>
-			</fieldset>
-		</form>
-		<div id="response_wrapper">
+		<div id="request-wrapper">
+			<h2>Request Data</h2>
+			<form id="form" method="GET" action="gateway.php">
+				<fieldset>
+					<div>
+						<label for="url">Url:</label>
+						<input id="url" type="text" name="url" value="" />
+					</div>
+					<div>
+						<label for="method">Method:</label>
+						<select id="method" name="method">
+							<option value="GET">GET</option>
+							<option value="POST">POST</option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset id="params">
+					<div>
+						<label id="add">+ Add Param</label>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div id="send-wrapper">
+						<input id="send" type="submit" value="Send">
+					</div>
+					<div id="loading-wrapper">
+						<img id="loading" src="./gfx/ajax-loader.gif" alt="loading..." title="loading..." />
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div id="response-wrapper">
 			<h2>Response</h2>
 			<div id="response">
 				<div>

@@ -9,62 +9,83 @@
  *
  */
 
+/********************************************************************************
+* Structure
+*/
+
 body {
 	font-size: 62.5%;
-	font-family: Arial, sans-serif; 
+	font-family: Arial, sans-serif;
+	background-color: #444444;
 }
 
 h2 {
-	font-size: 1.6em;
-	padding: 20px 0 0 10px;	
+	font-size: 1.8em;
+	margin: 0 0 0 13px;
 }
 
 label, input, select, span {
-	margin: 0 0 0 10px;
+	margin: 0 0 0 13px;
 }
 
 label, span {
 	width: 50px;
-	font-size: 1.4em;
+	font-size: 1.3em;
 	display: inline-block;
 }
 
 input, select {
-	width: 75px;
+	width: 100px;
 }
 
-div.param {
-	padding: 10px 10px 10px 30px;
+#request-wrapper, #response-wrapper {
+	width: 700px;
+	padding: 25px;
+	margin: 25px auto;
+	background-color: #ffffff;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
 }
 
-div.param input {
-	width: 213px;
-	margin: 0 10px 0 0;
+#form, #response {
+	padding: 20px 0 0;
 }
 
-label.close {
+#form div, #response div {
+	padding: 11px 0;
+}
+
+#params, #response-wrapper, #loading-wrapper {
+	display: none;
+}
+
+/********************************************************************************
+* Request
+*/
+
+#form fieldset {
+	padding: 13px 0;
+}
+
+#form div.param input {
+	width: 220px;
+	margin: 0 25px 0 13px;
+}
+
+#form label.close {
 	cursor: pointer;
 	width: auto;
 }
 
-label.error {
+#form label.error {
 	font-size: 1.2em;
 	color: #ff0000;
 	width: auto;
 }
 
-#form, #response {
-	padding: 0;
-	margin: 15px;
-	border-left: 2px solid black;
-}
-
-#form div, #response div {
-	padding: 10px;
-}
-
 #url {
-	width: 510px;
+	width: 545px;
 }
 
 #add {
@@ -72,18 +93,25 @@ label.error {
 	cursor: pointer;
 }
 
-#loading_wrapper img {
+#loading-wrapper img {
 	padding: 1px 0;
 	margin: 0 0 0 38px;
 }
 
+/********************************************************************************
+* Response
+*/
+
 #content {
-	width: 700px;
+	width: 600px;
+	padding: 13px;
 	overflow: auto;
 	font-size: 1.6em;
-	margin: 20px 0 0 20px;
-}
-
-#params, #response_wrapper, #loading_wrapper {
-	display: none;
+	margin: 13px 0 0 13px;
+	background-color: #eeeeee;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
 }
