@@ -3,9 +3,6 @@
 /*
  * Lurl PHP Gateway
  * 
- * Version 1.0
- * Last Revision: 2010 06 04
- * 
  * by Marco 'Xmas' Colombo <marco.natale.colombo AT gmail DOT com>
  * Copyright (C) 2010 Marco Natale Colombo. All Rights Reserved.
  *
@@ -61,16 +58,13 @@ function collect_data() {
 function prepare_url($url) {
 	
 	$url = explode('://', $url, 2); 
+	
 	if(count($url) == 1) {
 		array_unshift($url, 'http');
 	}
 	
-	if($url[1] == gethostbyname($url[1])) {
-		$url = false;
-	} else {
-		$url = implode('://', $url);
-	}
-	
+	$url = implode('://', $url);
+			
 	return $url;
 }
 
