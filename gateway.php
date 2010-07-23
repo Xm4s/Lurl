@@ -15,22 +15,15 @@ function send() {
 	$request = collect_data();
 	
 	$url = prepare_url($request['url']);
-	
-	if($url != false) {
-	
-		$opts = prepare_options($request['method'], $request['data']);
 		
-		$context = stream_context_create($opts);
-		$fd = fopen($url, 'r', false, $context);
-		$response = stream_get_contents($fd);
-		fclose($fd);
+	$opts = prepare_options($request['method'], $request['data']);
 		
-		return htmlentities($response, ENT_QUOTES);
-	
-	} else {
+	$context = stream_context_create($opts);
+	$fd = fopen($url, 'r', false, $context);
+	$response = stream_get_contents($fd);
+	fclose($fd);
 		
-		return 'LURL ERROR: cannot resolve given url.';
-	}
+	return htmlentities($response, ENT_QUOTES);
 }
 
 function collect_data() {
