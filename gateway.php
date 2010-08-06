@@ -13,9 +13,7 @@ echo send();
 function send() {
 
 	$request = collect_data();
-	
 	$url = prepare_url($request['url']);
-		
 	$opts = prepare_options($request['method'], $request['data']);
 		
 	$context = stream_context_create($opts);
@@ -28,12 +26,8 @@ function send() {
 
 function collect_data() {
 	
-	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$params = $_POST;
-	} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-		$params = $_GET;
-	}
-		
+	$params = $_GET;
+	
 	$request['url'] = $params['__url'];
 	unset($params['__url']);
 	

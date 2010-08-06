@@ -25,7 +25,6 @@ var lurl = {
 	method: {
 	
 		init: function method() {
-		
 			$('#method')
 				.bind('change', lurl.method.onChange)
 				.trigger('change');
@@ -35,7 +34,7 @@ var lurl = {
 			
 			var method = $('#method option:selected').val();
 			
-			if(method == 'POST') {
+			if(method == 'POST' || method == 'PUT') {
 				$('#params').show();
 			} else {
 				$('#params').hide();
@@ -48,7 +47,6 @@ var lurl = {
 	params: {
 		
 		init: function init() {
-			
 			$('#add').bind('click', lurl.params.onClickAdd);
 		},
 		
@@ -67,7 +65,6 @@ var lurl = {
 			$('#params').append(param.join(''));
 						
 			$('div.param:last label.close').bind('click', function(e) {
-				
 				$target = $(e.target).parent();
 				$target.detach();
 			});
@@ -81,7 +78,6 @@ var lurl = {
 		init: function init() {
 										
 			$('#form').validate({
-
 				rules: {
 					url: {
 						required: true,
@@ -116,8 +112,7 @@ var lurl = {
 			requestData.push('&__method=' + $('#method').val());
 			requestData.push('&' + requestParam);
 						
-			if($('#method').val() == 'POST') {
-				
+			if($('#method').val() == 'POST' || $('#method').val() == 'PUT') {
 				$('div.param').each(function() {
 					requestData.push('&' + $(this).children('input.name').val());
 					requestData.push('=' + $(this).children('input.value').val());
@@ -127,7 +122,7 @@ var lurl = {
 			requestData = requestData.join('');
 												
 			$.ajax({
-				type: $('#method').val(),
+				type: 'GET',
 				url: 'gateway.php',
 				data: requestData,
 				dataType: 'text',
