@@ -34,7 +34,7 @@ var lurl = {
 			
 			var method = $('#method option:selected').val();
 			
-			if(method == 'POST' || method == 'PUT') {
+			if(method == 'POST') {
 				$('#params').show();
 			} else {
 				$('#params').hide();
@@ -112,7 +112,7 @@ var lurl = {
 			requestData.push('&__method=' + $('#method').val());
 			requestData.push('&' + requestParam);
 						
-			if($('#method').val() == 'POST' || $('#method').val() == 'PUT') {
+			if($('#method').val() == 'POST') {
 				$('div.param').each(function() {
 					requestData.push('&' + $(this).children('input.name').val());
 					requestData.push('=' + $(this).children('input.value').val());
