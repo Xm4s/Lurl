@@ -19,6 +19,7 @@ body {
 h2 {
 	font-size: 1.8em;
 	margin: 0 0 0 13px;
+	padding: 13px 0;
 }
 
 label, input, select, span {
@@ -37,20 +38,16 @@ input, select {
 
 #request-wrapper, #response-wrapper {
 	width: 700px;
-	padding: 25px;
-	margin: 25px auto;
+	padding: 13px;
+	margin: 26px auto;
 	background-color: #ffffff;
 	-webkit-border-radius: 7px;
 	-moz-border-radius: 7px;
 	border-radius: 7px;
 }
 
-#form, #response {
-	padding: 20px 0 0;
-}
-
-#form div, #response div {
-	padding: 11px 0;
+#form div {
+	padding: 13px 0;
 }
 
 #params, #response-wrapper, #loading-wrapper {
@@ -66,8 +63,8 @@ input, select {
 }
 
 #form div.param input {
-	width: 220px;
-	margin: 0 25px 0 13px;
+	width: 237px;
+	margin: 0 13px;
 }
 
 #form label.close {
@@ -82,7 +79,7 @@ input, select {
 }
 
 #url {
-	width: 545px;
+	width: 600px;
 }
 
 #add {
@@ -95,16 +92,24 @@ input, select {
 	margin: 0 0 0 38px;
 }
 
+#params {
+	margin: -26px 0 0;
+}
+
+#send-wrapper, #loading-wrapper {
+	padding: 0 !important;
+}
+
 /********************************************************************************
 * Response
 */
 
 #content {
-	width: 600px;
+	width: 645px;
+	margin: 13px;
 	padding: 13px;
 	overflow: auto;
 	font-size: 1.6em;
-	margin: 13px 0 0 13px;
 	background-color: #eeeeee;
 	word-wrap: break-word;
 	white-space: pre-wrap;

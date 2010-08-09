@@ -22,9 +22,9 @@ function send() {
 	fclose($fd);
 	
 	$header = join("\n", $http_response_header);
-	$response = htmlentities($response, ENT_QUOTES);	
+	$content = htmlentities($response, ENT_QUOTES);	
 		
-	return '<b>HEADER</b>' . "\n\n" . $header . "\n\n" . '<b>RESPONSE</b>' . "\n\n" . $response;
+	return '<b>HEADER</b>' . "\n\n" . $header . "\n\n" . '<b>CONTENT</b>' . "\n\n" . $content;
 }
 
 function collect_data() {
