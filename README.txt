@@ -1,4 +1,4 @@
-LURL - Local url
+Lurl - Local URL
 
 ABOUT
 Lurl is PHP app to make an http request and view the response.
