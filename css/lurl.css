@@ -108,7 +108,7 @@ input, select {
 	width: 645px;
 	margin: 13px;
 	padding: 13px;
-	overflow: auto;
+	overflow: none;
 	font-size: 1.6em;
 	background-color: #eeeeee;
 	word-wrap: break-word;
