@@ -73,6 +73,9 @@ input, select {
 }
 
 #form label.error {
+	display: block;
+	padding: 0 0 3px;
+	margin: 0 0 0 79px;
 	font-size: 1.2em;
 	color: #ff0000;
 	width: auto;

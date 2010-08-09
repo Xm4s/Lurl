@@ -84,6 +84,10 @@ var lurl = {
 					}
 				},
 
+				errorPlacement: function(error, element) {
+					error.prependTo(element.parent());
+				},
+				
 				submitHandler: function() {
 					lurl.send.ajaxSubmit();
 				}
