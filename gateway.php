@@ -20,8 +20,11 @@ function send() {
 	$fd = fopen($url, 'r', false, $context);
 	$response = stream_get_contents($fd);
 	fclose($fd);
+	
+	$header = join("\n", $http_response_header);
+	$response = htmlentities($response, ENT_QUOTES);	
 		
-	return htmlentities($response, ENT_QUOTES);
+	return '<b>HEADER</b>' . "\n\n" . $header . "\n\n" . '<b>RESPONSE</b>' . "\n\n" . $response;
 }
 
 function collect_data() {
@@ -34,9 +37,10 @@ function collect_data() {
 	$request['method'] = $params['__method'];
 	unset($params['__method']);
 	
-	$request['data'] = '';
 	if(count($params) > 0) {
 		$request['data'] = http_build_query($params);
+	} else {
+		$request['data'] = '';
 	}
 	
 	return $request;
