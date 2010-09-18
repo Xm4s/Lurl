@@ -1,8 +1,10 @@
 /*
- * Lurl Local Script
+ * Lurl Script
  * 
- * by Marco 'Xmas' Colombo <marco.natale.colombo AT gmail DOT com>
  * Copyright (C) 2010 Marco Natale Colombo. All Rights Reserved.
+ * Released under GNU GPL Version 2
+ *
+ * by Marco 'Xmas' Colombo <jintetsu AT gmail DOT com>
  *
  */
 
